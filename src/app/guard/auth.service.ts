@@ -13,7 +13,6 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.GetToken();
-    console.log(token);
-    return token == undefined || token == null;
+    return (token !== undefined && token !== null);
   }
 }

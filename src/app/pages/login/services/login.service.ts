@@ -14,11 +14,12 @@ export class LoginService {
 
 
   logIn({ username, password }): Observable<Auth> {
-    const headers = new HttpHeaders().append(
-      'Content-Type',
-      'application/x-www-form-urlencoded'
-    );
-    const body = `username=${username}&password=${password}&grant-type=password`;
-    return this.http.post<Auth>(`${environment.url_auth}`, body, { headers });
+
+    let credencial =
+    {
+      "username": username,
+      "password": password
+    }
+    return this.http.post<Auth>(`${environment.url}/login`, credencial);
   }
 }
