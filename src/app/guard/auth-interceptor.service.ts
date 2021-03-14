@@ -15,7 +15,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (this._authService.isAuthenticated()) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this._authService.GetToken()}`
+          Authorization: `Bearer ${this._authService.GetToken()}`,
+          CorrelationId: this._authService.GetCorrelationId()
         }
       });
       return next.handle(request);

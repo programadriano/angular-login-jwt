@@ -13,6 +13,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  public GetCorrelationId(): string {
+    return localStorage.getItem('correlationId');
+  }
+
   public isAuthenticated(): boolean {
     const token = this.GetToken();
     return !this._jwtHelper.isTokenExpired(token);;
