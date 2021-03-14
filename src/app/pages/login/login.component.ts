@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.logOut();
     this.iniciaFormulario();
   }
 
@@ -30,11 +31,16 @@ export class LoginComponent implements OnInit {
   autentica() {
     this._loginService.logIn(this.loginForm.value).subscribe((auth: Auth) => {
       const { token, usuario } = auth;
-      console.log(auth);
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(usuario));
       this._router.navigate(['/home']);
     })
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this._router.navigate(['/login']);
   }
 
 }
