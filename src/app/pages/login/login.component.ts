@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       if (auth === null)
         return this._alertService.error('', 'Usuário ou senha incorreto(s)!', 'OK');
 
-      const { token, usuario } = auth;
+      const { token, usuario, correlationId } = auth;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(usuario));
       localStorage.setItem('correlationId', uuidv4());
